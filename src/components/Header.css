@@ -1,0 +1,32 @@
+.header-container {
+    background: red;
+    height: 50px;
+    width: 100%;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+}
+
+.header-items {
+    color: black;
+    margin-left: -15px;
+}
+.header-items li {
+    display: inline;
+
+}
+
+.list-item {
+    margin-left: 15px;
+}
+
+.list-item:hover {
+    cursor: pointer;
+}
+
+.list-item.first {
+    margin-left: 40px;
+}
+

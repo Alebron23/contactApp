@@ -1,0 +1,18 @@
+
+.App {
+  height: 100%;
+}
+
+.app-container {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+}
