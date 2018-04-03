@@ -13,10 +13,10 @@ class App extends Component {
 
         <div className="app-container">
           <div className="app"> 
-            <Header />
+            <Header index={5} />
             app
           </div>
-          
+
         </div>
       </div>
     );

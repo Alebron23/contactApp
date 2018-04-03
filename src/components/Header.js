@@ -21,7 +21,7 @@ const Header = () => (
 )
 
 Header.propTypes = {
-  
+  index: PropTypes.number
 }
 
 export default Header
