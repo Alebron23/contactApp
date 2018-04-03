@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types'
 
 import ContactListHeader from './ContactListHeader';
-import Contact from './Contact';
+import ContactRow from './ContactRow';
 import Header from '../Header';
-import { getContactAsync } from '../../repositories/projectsRepo';
+import { getContactsAsync } from '../../repositories/projectsRepo';
 
 import './ContactList.css';
 
@@ -15,7 +15,7 @@ class ContactList extends Component {
   }
 
   async componentDidMount() {
-    const contacts = await getContactAsync({
+    const contacts = await getContactsAsync({
       limit: 1,
       sort: 'first_name' | 'last_name' | 'address' | 'city' | 'state',
       desc: true,
@@ -36,16 +36,16 @@ class ContactList extends Component {
           <ContactListHeader />
           {this.state.contacts.map(contact => ( 
             <Link 
-              to={`/contact${contact.id}`}
+              to={`/contact/${contact.id}`}
               key={contact.id}
               style={{ textDecoration: 'none', width: '100%', color: 'black', marginLeft: '-30px' }}>
-              <Contact 
+              <ContactRow 
                 contactName={`${contact.first_name} ${contact.last_name}`}
                 companyName={contact.company_name}
                 cityState={`${contact.city} ${contact.state}`}
                 phoneNumber={contact.phone}
                 email={contact.email} 
-                key={contact.id}/>
+                key={contact.id} />
             </Link>
           ))}
         </div>

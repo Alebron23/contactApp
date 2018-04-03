@@ -1,26 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../Header';
+import { getContactAsync } from '../../repositories/projectsRepo';
 
-import './Contact.css';
+class Contact extends Component {
+  state = { 
+    contact: ''
+  }
 
-const Contact = ({ contactName, companyName, cityState, phoneNumber, email}) => (
-  <div className='contact-container'>
-    <div className='contact-name'>{contactName}</div>
-    <div className='company-name'>{companyName}</div>
-    <div className='city-state'>{cityState}</div>
-    <div className='phone'>{phoneNumber}</div>
-    <div className='email'>{email}</div>
-  </div>
-)
+  async componentDidMount() {
+    if (this.props.match !== undefined) {
+      const contact = await getContactAsync(this.props.match.params.id)
 
+      if (contact) {
+        this.setState({ contact });
+      }
+    }
+  }
+
+  render() {
+    const { 
+      address,
+      city,
+      company_name,
+      created_at,
+      email,
+      first_name,
+      id,
+      last_name,
+      phone,
+      state,
+      updated_at,
+      url,
+      work_phone,
+      zip
+    } = this.state.contact;
+
+    return (
+      <div>
+        {this.state.contact === '' ? 
+          '' 
+        :  
+          <div>
+            <div> {`${first_name} ${last_name}`}</div>
+            <div> {company_name} </div>
+            <div> {`${address} ${city}, ${state}, ${zip}`} </div>
+            <div> {phone} </div>
+            <div> {work_phone} </div>
+            <div> {email} </div>
+            <div> {url} </div>
+          </div>
+        }
+      </div>
+    )
+  }
+}
+  
 Contact.propTypes = {
-  contactName: PropTypes.string,
-  companyName: PropTypes.string,
-  cityState: PropTypes.string,
-  phoneNumber: PropTypes.string,
-  email: PropTypes.string
+  match: PropTypes.object
 }
 
-export default Contact;
+export default Contact
