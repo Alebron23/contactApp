@@ -1,0 +1,66 @@
+.contact-container {
+    align-items: flex-start;
+    background: #fff;
+    border-top: 0.5px solid;
+    /* box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    color: rgba(#000, 0.7);
+    display: flex;
+    flex-direction: row;
+    height: 30%;
+    padding: 15px;
+    width: 100%;
+
+      /* &.first-element {
+        border-radius: rem(8px) rem(8px) 0 0;
+        border-top: none;
+      } */
+}
+
+.contact-container:hover{
+  background: rgb(238, 238, 238);
+  cursor: pointer;
+}
+  
+  
+.contact-name {
+  flex-basis: 140px; 
+  flex-grow: 1;
+  flex-shrink: 0;
+  max-width: 244px;
+}
+  
+.company-name {
+  flex-basis: 110px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-left: 13px;
+  max-width: 215px;
+  padding-bottom: 0;
+}
+  
+.city-state {
+  flex-basis: 85px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-left: 23px;
+  max-width: 196px;
+  word-break: break-all;
+}
+  
+.phone {
+  flex-basis: 65px;
+  flex-grow: 1;
+  margin-left: 23px;
+  max-width: 135;
+  word-break: break-all;
+}
+  
+.email {
+  flex-basis: 75px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-left: 18px;
+  max-width: 199px;
+  word-break: break-all;
+}

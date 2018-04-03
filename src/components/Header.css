@@ -1,5 +1,6 @@
 .header-container {
-    background: red;
+    background: #063C4B;
+    font-family: 'Montserrat', sans-serif;
     height: 50px;
     width: 100%;
 }
@@ -10,15 +11,15 @@
 }
 
 .header-items {
-    color: black;
     margin-left: -15px;
 }
+
 .header-items li {
     display: inline;
-
 }
 
 .list-item {
+    font-size: 12px;
     margin-left: 15px;
 }
 

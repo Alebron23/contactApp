@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Header from './Header';
 import { addContactAsync } from '../repositories/projectsRepo';
 
 import './AddContact.css';
@@ -95,6 +96,7 @@ class AddContact extends Component {
 
     return (
       <div className="add-contact-container">
+      <Header />
       <h3> Add Contact </h3>
   
       <form id="AddContactForm" onSubmit={this.handleSubmit}>
@@ -165,7 +167,7 @@ class AddContact extends Component {
               name="zip" 
               placeholder="29301" 
               onChange={this.handleZipChange}
-              value={state}/>
+              value={zip}/>
           <br />
   
           <label>Phone: </label><br />

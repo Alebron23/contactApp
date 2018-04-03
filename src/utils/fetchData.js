@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const apiRequestAsync = async(path, options = {}, isTotal) => {
+export const apiRequestAsync = async(path, options = {}) => {
   const method = options.method || 'GET'
   const headers = { 'X-Auth-Token': 'M94Ga2btxEXc3qQdE9BbndBBkpHRrmpQrFGxx2K0' }
   const body = JSON.stringify(options.body)
@@ -16,13 +16,8 @@ export const apiRequestAsync = async(path, options = {}, isTotal) => {
       data: body,
       headers
     })
-    
-    // Get total number of projects
-    if (isTotal) {
-      return { projectsData: res.data, projectsTotal: res.headers['x-total-count'] }
-    }
 
-    const obj = { x: 'sdfsdf'}
+    let obj = {}
 
     return res.data
   } catch (error) {
