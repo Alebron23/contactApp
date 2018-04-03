@@ -1,33 +1,33 @@
 .header-container {
-    background: #063C4B;
-    font-family: 'Montserrat', sans-serif;
-    height: 50px;
-    width: 100%;
+  background: #063C4B;
+  font-family: 'Montserrat', sans-serif;
+  height: 50px;
+  width: 100%;
 }
 
 .header {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
 }
 
 .header-items {
-    margin-left: -15px;
+  margin-left: -15px;
 }
 
 .header-items li {
-    display: inline;
+  display: inline;
 }
 
 .list-item {
-    font-size: 12px;
-    margin-left: 15px;
+  font-size: 12px;
+  margin-left: 15px;
 }
 
 .list-item:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .list-item.first {
-    margin-left: 40px;
+  margin-left: 40px;
 }
 

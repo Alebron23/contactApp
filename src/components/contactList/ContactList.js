@@ -36,7 +36,7 @@ class ContactList extends Component {
           <ContactListHeader />
           {this.state.contacts.map(contact => ( 
             <Link 
-              to='/contact'
+              to={`/contact${contact.id}`}
               key={contact.id}
               style={{ textDecoration: 'none', width: '100%', color: 'black', marginLeft: '-30px' }}>
               <Contact 

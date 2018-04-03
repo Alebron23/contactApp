@@ -2,7 +2,7 @@ import React from 'react'
 
 import './ContactListHeader.css'
 
-const ProjectHeader = () => (
+const ContactListHeader = () => (
   <div className='contact-list-header'>
     <div className='contact-list-name'>Contact Name</div>
     <div className='company-list-name'>Company Name</div>
@@ -12,4 +12,4 @@ const ProjectHeader = () => (
   </div>
 )
 
-export default ProjectHeader
+export default ContactListHeader

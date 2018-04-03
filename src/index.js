@@ -14,6 +14,6 @@ ReactDOM.render(<BrowserRouter>
     <Route exact path='/' component={App} />
     <Route path='/contact_list' component={ContactList} />
     <Route path='/add_contact' component={AddContact} />
-    <Route path='/contact' component={Contact} />
+    <Route path='/contact:id' component={Contact} />
   </Switch>
 </BrowserRouter>, document.getElementById('root'));

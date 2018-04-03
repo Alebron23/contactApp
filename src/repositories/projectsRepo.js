@@ -5,7 +5,7 @@ export const addContactAsync = async(contactInfo) => {
 }
 
 export const getContactAsync = async(body) => { 
-    const contactList = await apiRequestAsync(`https://challenge.acstechnologies.com/api/contact/`, { body, method: 'GET' })
-    
-    return contactList;
-  }
+  const contactList = await apiRequestAsync(`https://challenge.acstechnologies.com/api/contact/`, { body, method: 'GET' })
+
+  return contactList;
+}
