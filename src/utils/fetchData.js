@@ -12,7 +12,7 @@ export const apiRequestAsync = async(path, options = {}, isTotal) => {
   try {
     const res = await axios({
       method,
-      url: `${path}`,
+      url: path,
       data: body,
       headers
     })
