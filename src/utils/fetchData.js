@@ -21,7 +21,7 @@ export const apiRequestAsync = async(path, options = {}) => {
 
     return res.data
   } catch (error) {
-    const newError = new Error(error.response.statusText)
+    const newError = error.response !== undefined ? new Error(error.response.statusText) : error;
 
     newError.response = error.response
     alert(newError)

@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../Header';
-
 import './ContactRow.css';
 
 const ContactRow = ({ contactName, companyName, cityState, phoneNumber, email, match }) => (
-  <div className='contact-container'>
-    message with {match !== undefined ? match.params.id : ''}
-    <div className='contact-name'>{contactName}</div>
-    <div className='company-name'>{companyName}</div>
-    <div className='city-state'>{cityState}</div>
-    <div className='phone'>{phoneNumber}</div>
-    <div className='email'>{email}</div>
+  <div className='contact-row-container'>
+    <div className='contact-name-row'>{contactName}</div>
+    <div className='company-row'>{companyName}</div>
+    <div className='city-state-row'>{cityState}</div>
+    <div className='phone-row'>{phoneNumber}</div>
+    <div className='email-row'>{email}</div>
   </div>
 )
 

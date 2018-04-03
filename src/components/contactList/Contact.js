@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactTooltip from 'react-tooltip';
 
+import Header from '../Header';
 import { getContactAsync } from '../../repositories/projectsRepo';
+
+import './Contact.css';
 
 class Contact extends Component {
   state = { 
-    contact: ''
+    contact: '',
+    isEditShown: false
   }
 
   async componentDidMount() {
@@ -16,6 +21,10 @@ class Contact extends Component {
         this.setState({ contact });
       }
     }
+  }
+
+  handleDisplayEdit = () => {
+
   }
 
   render() {
@@ -38,19 +47,24 @@ class Contact extends Component {
 
     return (
       <div>
-        {this.state.contact === '' ? 
-          '' 
-        :  
-          <div>
-            <div> {`${first_name} ${last_name}`}</div>
-            <div> {company_name} </div>
-            <div> {`${address} ${city}, ${state}, ${zip}`} </div>
-            <div> {phone} </div>
-            <div> {work_phone} </div>
-            <div> {email} </div>
-            <div> {url} </div>
-          </div>
-        }
+        <Header />
+        <div className='contact-container'>
+          <h3>Contact Info</h3>
+          {this.state.contact === '' ? 
+            '' 
+          :  
+            <div className='contact' data-tip='click to update'>
+              <div className="contact-details"><em>Name</em>: {`${first_name} ${last_name}`}</div>
+              <div className="contact-details"><em>Company Name:</em> {company_name} </div>
+              <div className="contact-details"><em>Address:</em> {`${address} ${city}, ${state}, ${zip}`} </div>
+              <div className="contact-details"><em>Phone:</em> {phone} </div>
+              <div className="contact-details"><em>Work Phone:</em> {work_phone} </div>
+              <div className="contact-details"><em>Email:</em> {email} </div>
+              <div className="contact-details"><em>Url:</em> {url} </div>
+              <ReactTooltip />
+            </div>
+          }
+        </div>
       </div>
     )
   }

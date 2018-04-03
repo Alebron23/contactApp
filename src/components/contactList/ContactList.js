@@ -28,7 +28,6 @@ class ContactList extends Component {
   }
 
   render() {
-    console.log(this.state.contacts);
     return (
       <div className='contact-list-container'> 
         <Header />
