@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
 
 import Header from '../Header';
-import { getContactAsync } from '../../repositories/projectsRepo';
+import AddContact from '../AddContact';
+import { getContactAsync, deleteContactAsync } from '../../repositories/projectsRepo';
 
 import './Contact.css';
 
 class Contact extends Component {
   state = { 
     contact: '',
-    isEditShown: false
+    isInfoDisplayed: true
   }
 
   async componentDidMount() {
@@ -23,8 +24,12 @@ class Contact extends Component {
     }
   }
 
-  handleDisplayEdit = () => {
-
+  handleDisplayEdit = () => this.setState({ isInfoDisplayed: !this.state.isInfoDisplayed });
+  handleUpdateContact = updatedContact => {
+    this.setState({ contact: updatedContact });
+  }
+  handleDeleteContact = async () => {
+    await deleteContactAsync(this.state.contact.id);
   }
 
   render() {
@@ -32,17 +37,15 @@ class Contact extends Component {
       address,
       city,
       company_name,
-      created_at,
       email,
       first_name,
-      id,
       last_name,
       phone,
       state,
-      updated_at,
       url,
       work_phone,
-      zip
+      zip,
+      id
     } = this.state.contact;
 
     return (
@@ -52,8 +55,10 @@ class Contact extends Component {
           <h3>Contact Info</h3>
           {this.state.contact === '' ? 
             '' 
-          :  
-            <div className='contact' data-tip='click to update'>
+          : ( 
+          <div> 
+          {this.state.isInfoDisplayed ? 
+            <div className='contact' data-tip='click to update' onClick={this.handleDisplayEdit}>
               <div className="contact-details"><em>Name</em>: {`${first_name} ${last_name}`}</div>
               <div className="contact-details"><em>Company Name:</em> {company_name} </div>
               <div className="contact-details"><em>Address:</em> {`${address} ${city}, ${state}, ${zip}`} </div>
@@ -63,6 +68,27 @@ class Contact extends Component {
               <div className="contact-details"><em>Url:</em> {url} </div>
               <ReactTooltip />
             </div>
+          : 
+            <AddContact 
+              firstName={first_name}
+              lastName={last_name}
+              companyName={company_name}
+              address={address}
+              city={city}
+              state={state}
+              zip={zip}
+              phone={phone}
+              work_phone={work_phone}
+              email={email}
+              url={url}
+              isEditShown={true}
+              handleDisplayEdit={this.handleDisplayEdit}
+              id={id}
+              handleUpdateContact={this.handleUpdateContact}
+              handleDeleteContact={this.handleDeleteContact}/>
+          }
+            </div>
+          )
           }
         </div>
       </div>
