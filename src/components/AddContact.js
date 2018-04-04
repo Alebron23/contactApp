@@ -51,6 +51,7 @@ class AddContact extends Component {
     const cName = companyName !== undefined ? companyName : '';
     const addr = address !== undefined ? address : '';
     const cty = city !== undefined ? city : '';
+    const st = state !== undefined ? state : '';
     const zp = zip !== undefined ? zip : '';
     const pNum = phone !== undefined ? phone : '';
     const wpNum = workPhone !== undefined ? workPhone : '';
@@ -63,6 +64,7 @@ class AddContact extends Component {
       companyName: cName,
       address: addr,
       city: cty,
+      state: st,
       zip: zp,
       phone: pNum,
       workPhone: wpNum,

@@ -17,8 +17,6 @@ export const apiRequestAsync = async(path, options = {}) => {
       headers
     })
 
-    let obj = {}
-
     return res.data
   } catch (error) {
     const newError = error.response !== undefined ? new Error(error.response.statusText) : error;
