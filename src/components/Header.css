@@ -3,6 +3,7 @@
   font-family: 'Montserrat', sans-serif;
   height: 50px;
   width: 100%;
+  min-width: 850px;
 }
 
 .header {
@@ -16,6 +17,7 @@
 
 .header-items li {
   display: inline;
+  white-space: nowrap;
 }
 
 .list-item {

@@ -88,11 +88,12 @@ class AddContact extends Component {
   handleSetEditShown = isShown => this.setState({ isEditShown: isShown });
 
   handleSubmit = async event => {
-    if (this.state.firstName === '') {
-      alert('Please enter a valid First Name');
+    if (this.state.firstName === '' || this.state.lastname === '') {
+      alert('Please Enter a First and Last Name');
+      event.preventDefault();
     } else {
       event.preventDefault();
-      await addContactAsync({
+      const res = await addContactAsync({
         first_name: this.state.firstName,
         last_name: this.state.lastName,
         company_name: this.state.companyName,
@@ -106,25 +107,31 @@ class AddContact extends Component {
         url: this.state.url
       });
 
-      this.setState({
-        firstName: '',
-        lastName: '',
-        companyName: '',
-        address: '',
-        city: '',
-        state: '',
-        zip: '',
-        phone: '',
-        workPhone: '',
-        email: '',
-        url: '' 
-      })
+      if (res.success) {
+        alert('Success: Contact Added')
+
+        this.setState({
+          firstName: '',
+          lastName: '',
+          companyName: '',
+          address: '',
+          city: '',
+          state: '',
+          zip: '',
+          phone: '',
+          workPhone: '',
+          email: '',
+          url: '' 
+        })
+      } else {
+        alert('Err: Contact Not Added');
+      }
     }
   }
 
   handleUpdate = async event => {
     event.preventDefault();
-    const updatedContact = await updateContactAsync(this.props.id, {
+    const res = await updateContactAsync(this.props.id, {
         first_name: this.state.firstName,
         last_name: this.state.lastName,
         company_name: this.state.companyName,
@@ -138,11 +145,18 @@ class AddContact extends Component {
         url: this.state.url
     });
 
-    if (updatedContact) {
-      this.props.handleUpdateContact(updatedContact.updated_contact);
+    if (res.success) {
+      alert('Success: Contact Updated');
+      this.props.handleUpdateContact(res.updated_contact);
       this.props.handleDisplayEdit(false);
+    } else {
+      alert('Error: Contact Not Updated');
     }
-   
+  }
+
+  handleCancel = event => {
+    event.preventDefault();
+    this.props.handleDisplayEdit(false);
   }
 
   render() {
@@ -197,7 +211,7 @@ class AddContact extends Component {
                         className="form-input" 
                         type="text" 
                         name="company_name" 
-                        placeholder="NFL" 
+                        placeholder="Google" 
                         onChange={this.handleCompanyNameChange}
                         value={companyName}/>
                     <br />
@@ -304,10 +318,8 @@ class AddContact extends Component {
               </div>
     
               <div className='edit-buttons'>
-                <button id="submitTransaction" className='contact-button' type="submit" name="form-submit"> Submit</button>
-                <button className='contact-button' onClick={() => {
-                  this.props.handleDisplayEdit(false)
-                }}> Cancel </button>
+                <button id="submitTransaction" className='contact-button' type="submit" name="form-submit"> Update</button>
+                <button className='contact-button' onClick={this.handleCancel}> Cancel </button>
                 <Link style={{ color: 'white', textDecoration: 'none' }} to='/contact_list'>
                   <button className='contact-button' onClick={this.props.handleDeleteContact}>
                     Delete
@@ -321,12 +333,12 @@ class AddContact extends Component {
             <Header />
             <h3> Add Contact </h3>
             
-            <form id="AddContactForm" onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
               <div className='add-contact-form-container'>
                 <div className='add-contact-form'>
                   <div className='add-contact-form-half'>
                     <div>
-                      <label>First Name </label><br />
+                      <label>First Name <span className='required-field'>*</span></label><br />
                       <input 
                         className="form-input" 
                         type="text" 
@@ -338,7 +350,7 @@ class AddContact extends Component {
                     <br />
 
                     <div>
-                      <label>Last Name </label><br />
+                      <label>Last Name <span className='required-field'>*</span></label><br />
                       <input 
                         className="form-input" 
                         type="text" 
@@ -355,7 +367,7 @@ class AddContact extends Component {
                         className="form-input" 
                         type="text" 
                         name="company_name" 
-                        placeholder="NFL" 
+                        placeholder="Google" 
                         onChange={this.handleCompanyNameChange}
                         value={companyName}/>
                     </div>
@@ -461,7 +473,7 @@ class AddContact extends Component {
                 </div>
                 <br />
 
-                <button id="submitContact" className="contact-button" type="submit" name="form-submit"> Submit</button>
+                <button className='contact-button' type="submit" name="form-submit"> Submit</button>
               </div>
             </form>
           </div>

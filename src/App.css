@@ -1,9 +1,9 @@
-
-.App {
+.app-container {
   height: 100%;
+  width: 100%;
 }
 
-.app-container {
+.app {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -11,17 +11,50 @@
   width: 100%;
 }
 
-.app {
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 90%;
+}
+
+.intro {
+  border: 1px solid #0A3C4A;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.intro-header {
+  background: #E6283B;
+  color: #0A3C4A;
+  height: 30px;
   width: 100%;
 }
 
-.main {
-  height: 100%;
-  width: 100%;
+.intro-header h4 {
+  padding: 5px 0 0 5px;
+  margin-top: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
 }
+
 .app-logo {
   height: 70%;
   margin-top: 50px;
   width: 100%;
+}
+
+.app-footer {
+  background: #0A3C4A;
+  height: 40px;
+  margin-top: auto;
+  width: 100%;
+}
+
+.copyright {
+  color: white;
+  padding-top: 9px;
+  text-align: center;
 }

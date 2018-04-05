@@ -1,7 +1,9 @@
 import { apiRequestAsync } from '../utils/fetchData'
 
 export const addContactAsync = async contactInfo => { 
-  await apiRequestAsync(`https://challenge.acstechnologies.com/api/contact`, { body: contactInfo, method: 'POST' });
+  const res = await apiRequestAsync(`https://challenge.acstechnologies.com/api/contact`, { body: contactInfo, method: 'POST' });
+
+  return res;
 }
 
 export const getContactsAsync = async contactInfo => { 
@@ -24,5 +26,7 @@ export const updateContactAsync = async (contactId, contactInfo) => {
 }
 
 export const deleteContactAsync = async (contactId) => {
-  await apiRequestAsync(`https://challenge.acstechnologies.com/api/contact/${contactId}`, { method: 'DELETE' });
+  const res = await apiRequestAsync(`https://challenge.acstechnologies.com/api/contact/${contactId}`, { method: 'DELETE' });
+
+  return res;
 }

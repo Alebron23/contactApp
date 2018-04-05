@@ -29,7 +29,13 @@ class Contact extends Component {
     this.setState({ contact: updatedContact });
   }
   handleDeleteContact = async () => {
-    await deleteContactAsync(this.state.contact.id);
+    const res = await deleteContactAsync(this.state.contact.id);
+
+    if (res.success) {
+      alert('Success: Contact Deleted');
+    } else {
+      alert('Error: Contact Not Deleted');
+    }
   }
 
   render() {
@@ -58,7 +64,7 @@ class Contact extends Component {
           : ( 
           <div> 
           {this.state.isInfoDisplayed ? 
-            <div className='contact' data-tip='click to update' onClick={this.handleDisplayEdit}>
+            <div className='contact' data-tip='click to edit' onClick={this.handleDisplayEdit}>
               <div className="contact-details"><em>Name</em>: {`${first_name} ${last_name}`}</div>
               <div className="contact-details"><em>Company Name:</em> {company_name} </div>
               <div className="contact-details"><em>Address:</em> {`${address} ${city}, ${state}, ${zip}`} </div>

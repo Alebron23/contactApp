@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types'
 
 import ContactListHeader from './ContactListHeader';
 import ContactRow from './ContactRow';
@@ -51,10 +50,6 @@ class ContactList extends Component {
       </div>
     )
   }
-}
-
-ContactList.propTypes = {
-  
 }
 
 export default ContactList

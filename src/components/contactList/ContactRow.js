@@ -6,7 +6,7 @@ import './ContactRow.css';
 const ContactRow = ({ contactName, companyName, cityState, phoneNumber, email, match }) => (
   <div className='contact-row-container'>
     <div className='contact-name-row'>{contactName}</div>
-    <div className='company-row'>{companyName}</div>
+    <div className='company-name-row'>{companyName}</div>
     <div className='city-state-row'>{cityState}</div>
     <div className='phone-row'>{phoneNumber}</div>
     <div className='email-row'>{email}</div>

@@ -34,6 +34,10 @@
   width: 300px;
 }
 
+.required-field {
+  color: red;
+}
+
 input {
   border: 1px solid #DDDDDD;
   border-radius: 4px;
@@ -42,12 +46,21 @@ input {
   width: 200px;
 }
 
+input::placeholder {
+  color: rgb(228, 225, 225);
+}
+
 .contact-button {
   background: #0A3C4A;
   border-radius: 5px;
   color: white;
   height: 35px;
   width: 80px;
+}
+
+.contact-button.disabled {
+  background: rgb(131, 162, 171);
+  cursor: not-allowed; 
 }
 
 .edit-buttons {
